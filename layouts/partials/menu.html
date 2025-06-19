@@ -1,14 +1,12 @@
 {{- /*
-Renders a menu for the given menu ID with a theme switcher.
+Renders a menu with a theme switcher using params.menu configuration.
 
 @context {page} page The current page.
-@context {string} menuID The menu ID.
 
-@example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+@example: {{ partial "menu.html" (dict "page" .) }}
 */}}
 
 {{- $page := .page }}
-{{- $menuID := .menuID }}
 
 {{- with .Site.Params.menu }}
   <nav>
