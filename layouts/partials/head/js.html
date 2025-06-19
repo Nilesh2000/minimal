@@ -11,6 +11,6 @@
   {{- end }}
 {{- end }}
 
-{{- if and .Site.Params.umami.enabled .Site.Params.umami.script_url .Site.Params.umami.website_id }}
-  <script defer src="{{ .Site.Params.umami.jsLocation }}" data-website-id="{{ .Site.Params.umami.websiteId }}"></script>
+{{- if and .Site.Params.umami.enabled .Site.Params.umami.scriptUrl .Site.Params.umami.websiteId }}
+  <script defer src="{{ .Site.Params.umami.scriptUrl }}" data-website-id="{{ .Site.Params.umami.websiteId }}"></script>
 {{- end }}
