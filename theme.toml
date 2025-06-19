@@ -1,0 +1,36 @@
+name = 'minimal'
+license = 'MIT'
+licenselink = 'https://github.com/Nilesh2000/minimal/blob/main/LICENSE'
+description = 'A minimalistic theme for Hugo'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/Nilesh2000/minimal'
+
+# If you have a running demo of the theme
+demosite = 'https://nilesh2000.github.io/'
+
+# Taxonomy terms
+tags = [
+  'responsive',
+  'simple',
+  'minimal',
+  'clean',
+  'light',
+  'dark',
+  'blog',
+  'personal',
+  'portfolio'
+]
+features = [
+  'responsive',
+  'social-icons',
+  'favicon',
+  'vanilla-css',
+  'back-to-top',
+  'color-palette',
+]
+
+# If the theme has a single author
+[author]
+  name = 'Nilesh D'
+  homepage = 'https://nilesh2000.github.io/'
