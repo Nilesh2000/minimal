@@ -8,36 +8,27 @@ Renders a menu with a theme switcher using params.menu configuration.
 
 {{- $page := .page }}
 
-{{- with .Site.Params.menu }}
-  <nav>
-    <ul>
-      {{- range sort . "weight" }}
-      <li>
-        {{- $isActive := or (eq $page.RelPermalink .url) (and (eq .name "Home") (eq $page.RelPermalink "/")) }}
-        <a href="{{ .url }}" {{ if $isActive }}class="active"{{ end }}>
-          {{ .name }}
-        </a>
+{{- if .Site.Params.menu -}}
+  <nav class="main-nav">
+    <ul class="nav-list">
+      {{- range sort .Site.Params.menu "weight" -}}
+        <li class="nav-item">
+          <a href="{{ .url }}" class="nav-link{{ if eq $.RelPermalink .url }} active{{ end }}">
+            {{ .name }}
+          </a>
+        </li>
+      {{- end -}}
+      <li class="nav-item">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="m12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 6.34L4.93 4.93m11.32 0l1.41-1.41"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
       </li>
-      {{- end }}
-      <label class="toggle" role="switch" aria-label="Toggle dark mode">
-        <input type="checkbox" />
-        <svg class="sun-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.5" />
-
-          <line x1="12" y1="4" x2="12" y2="2" />
-          <line x1="12" y1="22" x2="12" y2="20" />
-          <line x1="4" y1="12" x2="2" y2="12" />
-          <line x1="22" y1="12" x2="20" y2="12" />
-
-          <line x1="18.4" y1="18.4" x2="19.8" y2="19.8" />
-          <line x1="18.4" y1="5.6" x2="19.8" y2="4.2" />
-          <line x1="5.6" y1="18.4" x2="4.2" y2="19.8" />
-          <line x1="5.6" y1="5.6" x2="4.2" y2="4.2" />
-        </svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-      </label>
     </ul>
   </nav>
 {{- end }}

@@ -82,7 +82,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 main {
@@ -91,8 +93,9 @@ main {
 
 footer {
   border-top: 1px solid var(--color-border);
-  padding-bottom: 1rem;
+  padding-top: 1rem;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .footer-content {
@@ -100,46 +103,99 @@ footer {
   line-height: 1.5;
 }
 
-/* Navigation */
-nav ul {
+/* Navigation - New Clean Design */
+.main-nav {
   display: flex;
-  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
   align-items: center;
 }
 
-nav ul li a {
-  color: var(--color-link);
-  font-weight: 400;
-  padding: 0.5rem 0;
-  position: relative;
+.nav-item {
+  margin: 0;
 }
 
-nav ul li a.active {
+.nav-link {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary);
+}
+
+.nav-link.active {
   color: var(--color-text-primary);
   font-weight: 500;
 }
 
-nav ul li a::after {
+.nav-link::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: currentColor;
+  background-color: var(--color-link);
   transition: width 0.3s ease;
 }
 
-nav ul li a:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-bg-strong);
+  color: var(--color-text-primary);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: block;
 }
 
 /* Header Styles */
 .header-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin: 0;
@@ -343,74 +399,6 @@ nav ul li a:hover::after {
   color: var(--color-text-secondary);
 }
 
-.toggle {
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  height: 2rem;
-  justify-content: center;
-  padding: 0.5rem;
-  position: relative;
-  transition: transform 0.2s ease;
-  width: 2rem;
-}
-
-.toggle input[type="checkbox"] {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.toggle:hover {
-  transform: scale(1.15);
-}
-
-.toggle svg {
-  height: 1.8rem;
-  position: absolute;
-  transition: opacity 0.2s ease, transform 0.3s ease;
-  width: 1.8rem;
-}
-
-.toggle .sun-icon {
-  opacity: 0;
-  stroke: #ffd700;
-  stroke-linecap: round;
-  stroke-width: 1.75;
-  transform: rotate(-90deg) scale(0.5);
-}
-
-.toggle .sun-icon circle {
-  stroke-width: 1.5;
-}
-
-.toggle .moon-icon {
-  fill: currentColor;
-  opacity: 1;
-  transform: rotate(0) scale(1);
-}
-
-/* Add dark theme states */
-[data-theme="dark"] .toggle .sun-icon {
-  opacity: 1;
-  transform: rotate(0) scale(1);
-}
-
-[data-theme="dark"] .toggle .moon-icon {
-  opacity: 0;
-  transform: rotate(90deg) scale(0.5);
-}
-
 /* Back to Top Button */
 #back-to-top {
   background: #f8f9fa;
@@ -442,24 +430,20 @@ nav ul li a:hover::after {
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
-  nav {
-    width: 100%;
-  }
-
   header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 1rem;
     padding-top: 0.5rem;
   }
 
-  nav ul {
-    flex-wrap: wrap;
-    gap: 1.6rem;
+  .main-nav {
+    width: 100%;
   }
 
-  .toggle {
-    margin-left: auto;
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 
   .post-list li {
