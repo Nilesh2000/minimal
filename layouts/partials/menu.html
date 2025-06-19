@@ -10,14 +10,14 @@ Renders a menu for the given menu ID with a theme switcher.
 {{- $page := .page }}
 {{- $menuID := .menuID }}
 
-{{- with index site.Menus $menuID }}
+{{- with .Site.Params.menu }}
   <nav>
     <ul>
-      {{- range . }}
+      {{- range sort . "weight" }}
       <li>
-        {{- $isActive := or ($page.IsMenuCurrent $menuID .) ($page.HasMenuCurrent $menuID .) (and (eq .Name "Home") (eq $page.RelPermalink "/")) }}
-        <a href="{{ .URL }}" {{ if $isActive }}class="active"{{ end }}>
-          {{ .Name }}
+        {{- $isActive := or (eq $page.RelPermalink .url) (and (eq .name "Home") (eq $page.RelPermalink "/")) }}
+        <a href="{{ .url }}" {{ if $isActive }}class="active"{{ end }}>
+          {{ .name }}
         </a>
       </li>
       {{- end }}
