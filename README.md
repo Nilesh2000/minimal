@@ -18,7 +18,7 @@ Minimal is a clean, responsive, and minimalistic theme for Hugo. The aim was to 
 
 1. **Create a new Hugo site:**
    ```bash
-   hugo new site <your-site-name> --config
+   hugo new site <your-site-name> --config toml
    ```
 
 2. **Add the theme to your site:**
@@ -58,7 +58,7 @@ name = 'Posts'
 url = '/posts'
 weight = 20
 
-# Social links - flexible configuration
+# Social links
 [[params.social]]
 name = "GitHub"
 url = "https://github.com/yourusername"
@@ -85,7 +85,7 @@ hugo new posts/my-first-post.md
 ## Support
 
 If you have any questions or need help, please open an issue on [GitHub](https://github.com/Nilesh2000/minimal/issues).
-If you use the theme or found it useful you can support me by leaving a star
+If you use the theme or found it useful you can support me by leaving a star on the repo.
 
 ## License
 
