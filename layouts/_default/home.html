@@ -3,14 +3,10 @@
     {{ .Site.Params.homepageContent | markdownify }}
   </div>
   <div class="social-icons">
-    <a href="{{ .Site.Params.github }}" target="_blank" aria-label="GitHub">
-      <i class="fa-brands fa-github"></i>
-    </a>
-    <a href="{{ .Site.Params.linkedin }}" target="_blank" aria-label="LinkedIn">
-      <i class="fa-brands fa-linkedin-in"></i>
-    </a>
-    <a href="{{ .Site.Params.twitter }}" target="_blank" aria-label="Twitter">
-      <i class="fa-brands fa-x-twitter"></i>
-    </a>
+    {{ range .Site.Params.social }}
+      <a href="{{ .url }}" target="_blank" aria-label="{{ .aria_label }}" title="{{ .name }}">
+        <i class="{{ .icon }}"></i>
+      </a>
+    {{ end }}
   </div>
 {{ end }}
