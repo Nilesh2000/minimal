@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="home-content">
-    {{ .Content }}
+    {{ .Site.Params.homepageContent | markdownify }}
   </div>
   <div class="social-icons">
     <a href="{{ .Site.Params.github }}" target="_blank" aria-label="GitHub">
